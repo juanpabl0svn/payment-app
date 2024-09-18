@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  # Servicio del frontend (React con Vite)
+  frontend:
+    build:
+      context: ./payment-app-front
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+    depends_on:
+      - backend 
+
+  backend:
+    build:
+      context: ./payment-app-back
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
