@@ -6,11 +6,11 @@ Bienvenido a **Payment App**, una plataforma de pagos en línea que permite a lo
 
 Puedes acceder a la aplicación desplegada en la siguiente URL:
 
-[http://ec2-3-17-62-141.us-east-2.compute.amazonaws.com/](http://ec2-3-17-62-141.us-east-2.compute.amazonaws.com/)
+[http://ec2-3-144-80-239.us-east-2.compute.amazonaws.com/](http://ec2-3-144-80-239.us-east-2.compute.amazonaws.com/)
 
 ## 🌍 IP de la Aplicación
 
-La aplicación está alojada en la siguiente IP: 3.17.62.141 
+La aplicación está alojada en la siguiente IP: [3.17.62.141 ](http://3.144.80.239/)
 
 
 ## 🗃️ Seed de la Base de Datos

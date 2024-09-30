@@ -55,8 +55,12 @@ const Transaction = () => {
             <p className="text-lg text-gray-700">
               Amount: {formatPrice(transaction.transaction.amount_in_cents)}
             </p>
-            <p className="text-lg text-gray-900">
-              Amount + FEE: {formatPrice(transaction.transaction.amount_in_cents*FEE)}
+            <p className="text-lg text-gray-700">
+              FEE: {formatPrice(transaction.transaction.amount_in_cents * FEE)}
+            </p>
+            <p className="text-lg text-gray-900 font-bold">
+              Amount + FEE:{" "}
+              {formatPrice(transaction.transaction.amount_in_cents * (1 + FEE))}
             </p>
             <p className="text-lg text-gray-700">
               Currency: {transaction.transaction.currency}
