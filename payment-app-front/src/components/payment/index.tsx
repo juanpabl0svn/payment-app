@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import {
   API_URL,
+  FEE,
   INTEGRITY,
   PUB_KEY,
   UAT_SANDBOX_WOMPI,
@@ -155,9 +156,13 @@ const Payment = ({
     e.preventDefault();
     const reference = uuidv4();
 
-    const mount = product!.price * units * 100;
+    const price = product!.price * units;
 
-    var signature = reference + mount + "COP" + INTEGRITY;
+    const amount = price * (1 + FEE);
+
+    const amount_in_cents = Math.ceil(amount) * 100;
+
+    const signature = reference + amount_in_cents + "COP" + INTEGRITY;
 
     const token = await tokeniceCard();
     if (!token)
@@ -166,7 +171,7 @@ const Payment = ({
     const req = await axios.post(`${API_URL}/transactions`, {
       product_id: product.id,
       acceptance_token,
-      amount_in_cents: mount,
+      amount_in_cents,
       currency: "COP",
       signature,
       customer_email: user.email,

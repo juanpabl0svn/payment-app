@@ -1,3 +1,4 @@
+import { FEE } from "../../utils/constants";
 import { formatPrice } from "../../utils/functions";
 import { IProduct } from "../../utils/interfaces";
 
@@ -21,8 +22,9 @@ const ProductDetail = ({
       />
       <div className="flex-1 basis-4 mx-6 md:mx-0 py-5">
         <h1 className="text-2xl font-bold text-gray-900">{product.title}</h1>
+        <span className="mt-4 text-gray-500">{formatPrice(product.price)}</span>
         <p className="text-3xl font-semibold text-green-600 mt-4">
-          {formatPrice(product.price)}
+          {formatPrice(product.price*(1+FEE))} <span className="text-sm">+ FEE</span>
         </p>
         <p className="text-sm text-gray-600  description">
           {product.description}

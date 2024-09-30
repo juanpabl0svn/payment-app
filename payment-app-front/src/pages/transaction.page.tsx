@@ -10,6 +10,7 @@ import { formatPrice } from "../utils/functions";
 import Confetti from "react-confetti";
 
 import { Link } from "react-router-dom";
+import { FEE } from "../utils/constants";
 
 const Transaction = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +23,6 @@ const Transaction = () => {
     if (!id) return;
     dispatch(fetchTransaction(id));
   }, [dispatch]);
-
 
   return (
     <div className="max-w-lg mx-auto my-8 p-6 bg-white rounded-lg shadow-lg grid place-content-center">
@@ -55,6 +55,9 @@ const Transaction = () => {
             <p className="text-lg text-gray-700">
               Amount: {formatPrice(transaction.transaction.amount_in_cents)}
             </p>
+            <p className="text-lg text-gray-900">
+              Amount + FEE: {formatPrice(transaction.transaction.amount_in_cents*FEE)}
+            </p>
             <p className="text-lg text-gray-700">
               Currency: {transaction.transaction.currency}
             </p>
@@ -79,7 +82,10 @@ const Transaction = () => {
               {new Date(transaction.transaction.finalized_at).toLocaleString()}
             </p>
           </div>
-          <Link to="/" className="bg-blue-400 rounded-sm p-2 mt-4 w-fit text-white">
+          <Link
+            to="/"
+            className="bg-blue-400 rounded-sm p-2 mt-4 w-fit text-white"
+          >
             Volver
           </Link>
         </>
